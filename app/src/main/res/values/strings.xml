@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Assignment2</string>
+    <string name="title_activity_children_list">ChildrenList</string>
+    <string name="title_activity_child_info">ChildInfo</string>
+</resources>
