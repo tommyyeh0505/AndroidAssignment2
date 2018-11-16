@@ -34,11 +34,13 @@ import java.text.DateFormat;
 public class MainActivity extends AppCompatActivity implements ChildListFragment.ChildListListener, ChildInfoFragment.ChildInfoListener {
     SQLHelper db;
     private static Button addButton;
+    private static MenuItem actionResetButton;
 
     @Override
     public void delete(int i) {
         db.deleteChild(i);
         refresh();
+        actionResetButton.setVisible(false);
     }
 
     @Override
@@ -110,6 +112,33 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
         AlertDialog dialog = alertDialog.create();
         dialog.show();
     }
+
+    public void search() {
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+        alertDialog.setTitle("Search CHILD");
+        alertDialog.setMessage("Search for Child");
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.child_search, null);
+        alertDialog.setView(dialogView);
+
+        final EditText text = (EditText)dialogView.findViewById(R.id.search_text);
+
+        alertDialog.setPositiveButton("SEARCH",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        ChildListFragment listFrag = (ChildListFragment) getSupportFragmentManager().findFragmentById(R.id.child_list_fragment);
+                        ArrayList<Child> children = db.getChildren(text.getText().toString());
+                        listFrag.setList(children);
+                        actionResetButton.setVisible(true);
+                        Toast.makeText(MainActivity.this, "List Filtered", Toast.LENGTH_LONG).show();
+                    }
+                });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
+    }
+
     public void refresh(){
         ChildListFragment listFrag = (ChildListFragment) getSupportFragmentManager().findFragmentById(R.id.child_list_fragment);
         ArrayList<Child> children = db.getChildren();
@@ -120,13 +149,12 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.app_bar, menu);
+        this.actionResetButton = menu.getItem(0);
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
     }
 
     @Override
@@ -137,8 +165,11 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
                 return true;
 
             case R.id.action_search:
-                // User chose the "Favorite" action, mark the current item
-                // as a favorite...
+                search();
+                return true;
+
+            case R.id.action_reset:
+                refresh();
                 return true;
 
             default:
@@ -148,5 +179,7 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
 
         }
     }
+
+
 
 }

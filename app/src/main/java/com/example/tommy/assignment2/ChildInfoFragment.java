@@ -94,11 +94,37 @@ public class ChildInfoFragment extends Fragment {
         isNaughty.setText("");
         dateCreated.setText("");
         delete.setVisibility(View.INVISIBLE);
+        delete.setVisibility(View.GONE);
+        id.setVisibility(View.GONE);
+        firstName.setVisibility(View.GONE);
+        lastName.setVisibility(View.GONE);
+        birthDate.setVisibility(View.GONE);
+        street.setVisibility(View.GONE);
+        city.setVisibility(View.GONE);
+        postalCode.setVisibility(View.GONE);
+        country.setVisibility(View.GONE);
+        latitude.setVisibility(View.GONE);
+        longitude.setVisibility(View.GONE);
+        isNaughty.setVisibility(View.GONE);
+        dateCreated.setVisibility(View.GONE);
 
     }
 
     public void setChild(Child c){
         delete.setVisibility(View.VISIBLE);
+        id.setVisibility(View.VISIBLE);
+        firstName.setVisibility(View.VISIBLE);
+        lastName.setVisibility(View.VISIBLE);
+        birthDate.setVisibility(View.VISIBLE);
+        street.setVisibility(View.VISIBLE);
+        city.setVisibility(View.VISIBLE);
+        postalCode.setVisibility(View.VISIBLE);
+        country.setVisibility(View.VISIBLE);
+        latitude.setVisibility(View.VISIBLE);
+        longitude.setVisibility(View.VISIBLE);
+        isNaughty.setVisibility(View.VISIBLE);
+        dateCreated.setVisibility(View.VISIBLE);
+
         id.setText(Integer.toString(c.getId()));
         selectChild.setText("");
         firstName.setText("First Name: " + c.getFirstName());

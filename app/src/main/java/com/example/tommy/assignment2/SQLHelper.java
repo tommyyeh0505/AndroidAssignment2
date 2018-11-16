@@ -101,6 +101,38 @@ public class SQLHelper extends SQLiteOpenHelper {
         return children;
     }
 
+    public ArrayList<Child> getChildren(String s) {
+        ArrayList<Child> children = null;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor= db.rawQuery("select * FROM KidList WHERE (firstName LIKE \'%" + s + "%\' OR lastName LIKE \'%" + s + "%\')", null);
+        int count = cursor.getCount();
+        Log.e("COUNT", "NUMBER OF KIDS " + count);
+        children = new ArrayList<Child>();
+        if (cursor.moveToFirst()) {
+            int ndx=0;
+            do {
+                Log.e("ID from DATABASE", cursor.getString(0));
+
+                children.add(new Child(
+                        Integer.parseInt(cursor.getString(0)),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getString(7),
+                        cursor.getString(8),
+                        Integer.parseInt(cursor.getString(9)),
+                        Integer.parseInt(cursor.getString(10)),
+                        Boolean.parseBoolean(cursor.getString(11)),
+                        cursor.getString(12)));
+            } while (cursor.moveToNext());
+        }
+        return children;
+    }
+
+
     public void deleteChild(int i){
         SQLiteDatabase db = this.getWritableDatabase();
         Log.e("Deleting id=", ""+i);
