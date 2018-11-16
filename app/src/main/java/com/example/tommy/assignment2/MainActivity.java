@@ -17,64 +17,46 @@ import android.widget.AdapterView.OnItemClickListener;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ChildListFragment.ChildListListener, ChildInfoFragment.ChildInfoListener {
+    SQLHelper db;
+
+    @Override
+    public void delete(int i) {
+        db.deleteChild(i);
+        refresh();
+    }
+
+    @Override
+    public void selectChild(Child c){
+        ChildInfoFragment frag = (ChildInfoFragment) getSupportFragmentManager().findFragmentById(R.id.child_info_fragment);
+        frag.setChild(c);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e("1", "IN ONCREATE");
         setContentView(R.layout.activity_main);
-
+        //APPBAR
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
-
         //CHILDREN LIST
-        SQLHelper db = new SQLHelper(this);
+        db = new SQLHelper(this);
 
         if (db.getChildren().size() == 0) {
             for (Child c : Child.CHILDREN) {
                 db.insertChild(c);
             }
         }
+        refresh();
 
+    }
 
-
-        Log.e("2", "Created DATABASE");
-        ListView list_children = (ListView) findViewById(R.id.children_list);
-        final ArrayList<Child> children = db.getChildren();
-        String[] childrenNames = new String[db.getChildren().size()];
-        for (int i = 0; i < db.getChildren().size(); i++) {
-            childrenNames[i] = children.get(i).toString();
-        }
-        Log.e("2", Arrays.asList(children).toString());
-        ChildAdapter arrayAdapter = new ChildAdapter(this, children);
-        list_children.setAdapter(arrayAdapter);
-
-        list_children.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapter, View v, int position, long pos) {
-
-                Intent intent = new Intent(MainActivity.this, ChildInfo.class);
-                Child c = children.get(position);
-                Log.e("C info", c.toString());
-                intent.putExtra("firstName", c.getFirstName());
-                intent.putExtra("id", c.getId());
-                intent.putExtra("lastName", c.getLastName());
-                intent.putExtra("isNaughty", c.getIsNaughty());
-                intent.putExtra("birthDate", c.getBirthDate());
-                intent.putExtra("street", c.getIsNaughty());
-                intent.putExtra("city", c.getCity());
-                intent.putExtra("province", c.getProvince());
-                intent.putExtra("postalCode", c.getPostalCode());
-                intent.putExtra("country", c.getCountry());
-                intent.putExtra("latitude", c.getLatitude());
-                intent.putExtra("longitude", c.getLongitude());
-                intent.putExtra("dateCreated", c.getDateCreated());
-
-                startActivity(intent);
-                finish();
-            }
-        });
+    public void refresh(){
+        ChildListFragment listFrag = (ChildListFragment) getSupportFragmentManager().findFragmentById(R.id.child_list_fragment);
+        ArrayList<Child> children = db.getChildren();
+        listFrag.setList(children);
     }
 
     @Override
