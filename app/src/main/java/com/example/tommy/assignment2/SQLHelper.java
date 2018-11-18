@@ -138,7 +138,7 @@ public class SQLHelper extends SQLiteOpenHelper {
     }
 
     public void editChild(Child child){
-       
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();//These Fields should be your String values of actual column names
         cv.put("firstName", child.getFirstName());
@@ -153,7 +153,7 @@ public class SQLHelper extends SQLiteOpenHelper {
         cv.put("longitude",child.getLongitude());
         cv.put("isNaughty",child.getIsNaughty());
         cv.put("dateCreated",child.getDateCreated());
-        db.update("KIDLIST", cv, "id="+child.getId(), null); }
+        db.update("KIDLIST", cv, "_id="+child.getId(), null); }
 
 
 }
