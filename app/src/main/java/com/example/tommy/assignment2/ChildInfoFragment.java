@@ -37,6 +37,7 @@ public class ChildInfoFragment extends Fragment {
 
     public interface ChildInfoListener {
         public void delete(int id);
+        public void edit(int id);
     }
 
     @Override
@@ -81,6 +82,7 @@ public class ChildInfoFragment extends Fragment {
         edit.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v){
+                        acitivityInterface.edit(Integer.parseInt(id.getText().toString()) );
                         clearAllText();
                     }
                 }

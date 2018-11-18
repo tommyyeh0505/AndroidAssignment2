@@ -137,22 +137,23 @@ public class SQLHelper extends SQLiteOpenHelper {
         db.delete("KIDLIST", "_id" + "=" + i, null);
     }
 
-    public void editChild(int id, String r){
+    public void editChild(Child child){
+       
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();//These Fields should be your String values of actual column names
-        cv.put("firstName",r);
-        cv.put("lastName",r);
-        cv.put("birthDate",r);
-        cv.put("street",r);
-        cv.put("city",r);
-        cv.put("province",r);
-        cv.put("postalCode",r);
-        cv.put("country",r);
-        cv.put("latitude",100);
-        cv.put("longitude",100);
-        cv.put("isNaughty",false);
-        cv.put("dateCreated",r);
-        db.update("KIDLIST", cv, "id="+id, null); }
+        cv.put("firstName", child.getFirstName());
+        cv.put("lastName",child.getLastName());
+        cv.put("birthDate",child.getBirthDate());
+        cv.put("street",child.getStreet());
+        cv.put("city",child.getCity());
+        cv.put("province",child.getProvince());
+        cv.put("postalCode",child.getPostalCode());
+        cv.put("country",child.getCountry());
+        cv.put("latitude",child.getLatitude());
+        cv.put("longitude",child.getLongitude());
+        cv.put("isNaughty",child.getIsNaughty());
+        cv.put("dateCreated",child.getDateCreated());
+        db.update("KIDLIST", cv, "id="+child.getId(), null); }
 
 
 }
