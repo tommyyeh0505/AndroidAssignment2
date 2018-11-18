@@ -17,21 +17,22 @@ import android.view.View.OnClickListener;
 
 public class ChildInfoFragment extends Fragment {
 
-    private static TextView firstName;
-    private static TextView lastName;
-    private static TextView birthDate;
-    private static TextView street;
-    private static TextView city;
-    private static TextView postalCode;
-    private static TextView country;
-    private static TextView latitude;
-    private static TextView longitude;
-    private static TextView isNaughty;
-    private static TextView dateCreated;
-    private static Button delete;
-    private static Button edit;
-    private static TextView selectChild;
-    private static TextView id;
+    private  TextView firstName;
+    private  TextView lastName;
+    private  TextView birthDate;
+    private  TextView street;
+    private  TextView city;
+    private  TextView postalCode;
+    private  TextView country;
+    private  TextView latitude;
+    private  TextView longitude;
+    private  TextView isNaughty;
+    private  TextView dateCreated;
+    private  Button delete;
+    private  Button edit;
+    private  TextView selectChild;
+    private  TextView id;
+    private Child c;
 
     ChildInfoFragment.ChildInfoListener acitivityInterface;
 
@@ -73,7 +74,7 @@ public class ChildInfoFragment extends Fragment {
         delete.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View v){
-                        acitivityInterface.delete(Integer.parseInt(id.getText().toString()) );
+                        acitivityInterface.delete(c.getId());
                         clearAllText();
                     }
                 }
@@ -92,7 +93,7 @@ public class ChildInfoFragment extends Fragment {
 
     public void clearAllText(){
         id.setText("");
-        selectChild.setText("SELECT CHILD");
+        selectChild.setText(R.string.select_child);
         firstName.setText("");
         lastName.setText("");
         birthDate.setText("");
@@ -124,6 +125,8 @@ public class ChildInfoFragment extends Fragment {
     }
 
     public void setChild(Child c){
+        Log.e("child: ", c.toString());
+        this.c = c;
         delete.setVisibility(View.VISIBLE);
         edit.setVisibility(View.VISIBLE);
         id.setVisibility(View.VISIBLE);
@@ -139,22 +142,22 @@ public class ChildInfoFragment extends Fragment {
         isNaughty.setVisibility(View.VISIBLE);
         dateCreated.setVisibility(View.VISIBLE);
 
-        id.setText(Integer.toString(c.getId()));
-        selectChild.setText("");
-        firstName.setText("First Name: " + c.getFirstName());
-        lastName.setText("Last Name: " + c.getLastName());
-        birthDate.setText("BirthDate: " + c.getBirthDate());
+        id.setText("ID: " + Integer.toString(c.getId()));
+        selectChild.setVisibility(View.GONE);
+        firstName.setText(c.getFirstName());
+        lastName.setText(c.getLastName());
+        birthDate.setText(c.getBirthDate());
         street.setText(c.getStreet());
         city.setText(c.getCity());
         postalCode.setText(c.getPostalCode());
         country.setText(c.getCountry());
-        latitude.setText("Latitude: " + Integer.toString(c.getLatitude()));
-        longitude.setText("Longitude: " + Integer.toString(c.getLongitude()));
+        latitude.setText(Double.toString(c.getLatitude()));
+        longitude.setText(Double.toString(c.getLongitude()));
         if(c.getIsNaughty()){
-            isNaughty.setText("Naughty");
+            isNaughty.setText(R.string.naughty);
         } else {
-            isNaughty.setText("Good");
+            isNaughty.setText(R.string.good);
         }
-        dateCreated.setText("Date Created: " + c.getDateCreated());
+        dateCreated.setText(c.getDateCreated());
     }
 }

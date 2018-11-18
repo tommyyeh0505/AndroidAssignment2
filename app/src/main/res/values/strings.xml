@@ -2,4 +2,28 @@
     <string name="app_name">Assignment2</string>
     <string name="title_activity_children_list">ChildrenList</string>
     <string name="title_activity_child_info">ChildInfo</string>
+    <string name="child_first_name">First Name</string>
+    <string name="child_last_name">Last Name</string>
+    <string name="child_is_naughty">Naughty?</string>
+    <string name="child_birth_date">Birth Date</string>
+    <string name="child_street">Street</string>
+    <string name="child_city">City</string>
+    <string name="child_province">Province</string>
+    <string name="child_postal_code">Postal Code</string>
+    <string name="child_country">Country</string>
+    <string name="child_latitude">Latitude</string>
+    <string name="child_longitude">Longitude</string>
+    <string name="child_date_created">Date Created</string>
+    <string name="select_child">SELECT CHILD</string>
+    <string name="delete_child">DELETE CHILD</string>
+    <string name="search_child">Enter First Name or Last Name</string>
+    <string name="add_button">Add Child</string>
+    <string name="search_button">Search Child</string>
+    <string name="reset_button">Reset Search</string>
+    <string name="enter_child_info">Enter Child Information</string>
+    <string name="list_filtered">List Filtered</string>
+    <string name="naughty">Naughty</string>
+    <string name="good">Good</string>
+
+
 </resources>

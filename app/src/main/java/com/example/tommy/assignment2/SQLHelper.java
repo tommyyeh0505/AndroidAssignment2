@@ -43,8 +43,8 @@ public class SQLHelper extends SQLiteOpenHelper {
         sql += "Province TEXT,";
         sql += "PostalCode TEXT,";
         sql += "Country TEXT,";
-        sql += "Latitude INTEGER,";
-        sql += "Longitude INTEGER,";
+        sql += "Latitude DECIMAL(4,2),";
+        sql += "Longitude DECIMAL(4,2),";
         sql += "IsNaughty BOOLEAN,";
         sql += "DateCreated TEXT);";
         return sql;
@@ -90,8 +90,8 @@ public class SQLHelper extends SQLiteOpenHelper {
                         cursor.getString(6),
                         cursor.getString(7),
                         cursor.getString(8),
-                        Integer.parseInt(cursor.getString(9)),
-                        Integer.parseInt(cursor.getString(10)),
+                        Double.parseDouble(cursor.getString(9)),
+                        Double.parseDouble(cursor.getString(10)),
                         Boolean.parseBoolean(cursor.getString(11)),
                         cursor.getString(12)));
             } while (cursor.moveToNext());
@@ -121,14 +121,25 @@ public class SQLHelper extends SQLiteOpenHelper {
                         cursor.getString(6),
                         cursor.getString(7),
                         cursor.getString(8),
-                        Integer.parseInt(cursor.getString(9)),
-                        Integer.parseInt(cursor.getString(10)),
+                        Double.parseDouble(cursor.getString(9)),
+                        Double.parseDouble(cursor.getString(10)),
                         Boolean.parseBoolean(cursor.getString(11)),
                         cursor.getString(12)));
             } while (cursor.moveToNext());
         }
         return children;
     }
+
+    public Child getChild(int i) {
+        for(Child c : getChildren()){
+            if(c.getId() == i){
+                return c;
+            }
+        }
+        return null;
+
+    }
+
 
 
     public void deleteChild(int i){

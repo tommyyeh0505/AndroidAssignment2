@@ -9,91 +9,102 @@
     android:orientation="vertical">
 
     <EditText
+        android:inputType="text"
         android:id="@+id/first_name"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="First Name"
+        android:hint="@string/child_first_name"
         android:textSize="17sp" />
 
     <EditText
+        android:inputType="text"
         android:id="@+id/last_name"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Last Name"
+        android:hint="@string/child_last_name"
         android:textSize="17sp" />
 
     <EditText
+        android:inputType="text"
         android:id="@+id/is_naughty"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Naughty?"
+        android:hint="@string/child_is_naughty"
         android:textSize="17sp" />
 
     <EditText
         android:id="@+id/birthDate"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Birth Date"
+        android:hint="@string/child_birth_date"
         android:textSize="17sp" />
 
     <EditText
+        android:inputType="text"
         android:id="@+id/street"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Street"
+        android:hint="@string/child_street"
         android:textSize="17sp" />
 
     <EditText
         android:id="@+id/city"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="City"
+        android:hint="@string/child_city"
         android:textSize="17sp" />
 
     <EditText
         android:id="@+id/province"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Province"
+        android:hint="@string/child_province"
         android:textSize="17sp" />
 
     <EditText
         android:id="@+id/postalCode"
         android:layout_width="match_parent"
+        android:inputType="text"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Postal Code"
+        android:hint="@string/child_postal_code"
         android:textSize="17sp" />
 
     <EditText
         android:id="@+id/country"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Country"
+        android:hint="@string/child_country"
         android:textSize="17sp" />
 
     <EditText
         android:id="@+id/latitude"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Latitude"
+        android:hint="@string/child_latitude"
         android:textSize="17sp" />
 
     <EditText
         android:id="@+id/longitude"
+        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Longitude"
+        android:hint="@string/child_longitude"
         android:textSize="17sp" />
 
 

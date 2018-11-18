@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddChildActivity">
+
+    <fragment
+        android:id="@+id/child_info_fragment_activity"
+        android:name="com.example.tommy.assignment2.ChildInfoFragment"
+        android:layout_width="match_parent"
+        android:layout_height="455dp"
+        android:layout_below="@+id/my_toolbar"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/child_list_fragment" />
+
+</LinearLayout>
