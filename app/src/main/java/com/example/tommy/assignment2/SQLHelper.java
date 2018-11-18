@@ -137,11 +137,22 @@ public class SQLHelper extends SQLiteOpenHelper {
         db.delete("KIDLIST", "_id" + "=" + i, null);
     }
 
-    public void editChild(int i){
+    public void editChild(int id, String r){
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.e("Editing id=", ""+i);
-        db.delete("KIDLIST", "_id" + "=" + i, null);
-    }
+        ContentValues cv = new ContentValues();//These Fields should be your String values of actual column names
+        cv.put("firstName",r);
+        cv.put("lastName",r);
+        cv.put("birthDate",r);
+        cv.put("street",r);
+        cv.put("city",r);
+        cv.put("province",r);
+        cv.put("postalCode",r);
+        cv.put("country",r);
+        cv.put("latitude",100);
+        cv.put("longitude",100);
+        cv.put("isNaughty",false);
+        cv.put("dateCreated",r);
+        db.update("KIDLIST", cv, "id="+id, null); }
 
 
 }
