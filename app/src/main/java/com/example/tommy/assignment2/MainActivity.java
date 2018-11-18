@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
     }
 
     @Override
-    public void edit(int i) {
+    public void edit(final int i) {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
         alertDialog.setTitle("EDIT CHILD");
         alertDialog.setMessage("Enter Child Information");
         LayoutInflater inflater = this.getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.child_edit, null);
+        final View dialogView = inflater.inflate(R.layout.child_add, null);
         alertDialog.setView(dialogView);
-
+        final int passedIn = i;
 
         final EditText firstName = (EditText)dialogView.findViewById(R.id.first_name);
         final EditText lastName = (EditText)dialogView.findViewById(R.id.last_name);
@@ -73,17 +73,18 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
                         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
                         Date date = new Date();
                         String dateString = dateFormat.format(date);
-                        Child child = new Child(-1, firstName.getText().toString(), lastName.getText().toString(), birthDate.getText().toString(),
+                        Child child = new Child(passedIn, firstName.getText().toString(), lastName.getText().toString(), birthDate.getText().toString(),
                                 street.getText().toString(), city.getText().toString(), province.getText().toString(), postalCode.getText().toString(),
                                 country.getText().toString(), Integer.parseInt(latitude.getText().toString()), Integer.parseInt(longitude.getText().toString()),
                                 Boolean.valueOf(isNaughty.getText().toString()), dateString );
                         db.editChild(child);
+                        Toast.makeText(MainActivity.this, "Child Edited", Toast.LENGTH_LONG).show();
                         refresh();
-                        Toast.makeText(MainActivity.this, "Child Added", Toast.LENGTH_LONG).show();
                     }
                 });
         AlertDialog dialog = alertDialog.create();
         dialog.show();
+
     }
 
     @Override
