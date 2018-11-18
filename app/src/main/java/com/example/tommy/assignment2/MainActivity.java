@@ -45,6 +45,49 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
     }
 
     @Override
+    public void edit(int i) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+        alertDialog.setTitle("EDIT CHILD");
+        alertDialog.setMessage("Enter Child Information");
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.child_edit, null);
+        alertDialog.setView(dialogView);
+
+
+        final EditText firstName = (EditText)dialogView.findViewById(R.id.first_name);
+        final EditText lastName = (EditText)dialogView.findViewById(R.id.last_name);
+        final EditText birthDate = (EditText)dialogView.findViewById(R.id.birthDate);
+        final EditText street = (EditText)dialogView.findViewById(R.id.street);
+        final EditText city = (EditText)dialogView.findViewById(R.id.city);
+        final EditText province = (EditText)dialogView.findViewById(R.id.province);
+        final EditText postalCode = (EditText)dialogView.findViewById(R.id.postalCode);
+        final EditText country = (EditText)dialogView.findViewById(R.id.country);
+        final EditText latitude = (EditText)dialogView.findViewById(R.id.latitude);
+        final EditText longitude = (EditText)dialogView.findViewById(R.id.longitude);
+        final EditText isNaughty = (EditText)dialogView.findViewById(R.id.is_naughty);
+
+
+        alertDialog.setPositiveButton("Edit",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                        Date date = new Date();
+                        String dateString = dateFormat.format(date);
+                        Child child = new Child(-1, firstName.getText().toString(), lastName.getText().toString(), birthDate.getText().toString(),
+                                street.getText().toString(), city.getText().toString(), province.getText().toString(), postalCode.getText().toString(),
+                                country.getText().toString(), Integer.parseInt(latitude.getText().toString()), Integer.parseInt(longitude.getText().toString()),
+                                Boolean.valueOf(isNaughty.getText().toString()), dateString );
+                        db.editChild(child);
+                        refresh();
+                        Toast.makeText(MainActivity.this, "Child Added", Toast.LENGTH_LONG).show();
+                    }
+                });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
+    }
+
+    @Override
     public void selectChild(Child c){
         View v = findViewById(R.id.child_info_fragment);
         if (v == null) {
