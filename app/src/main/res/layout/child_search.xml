@@ -9,11 +9,12 @@
     android:orientation="vertical">
 
     <EditText
+        android:inputType="text"
         android:id="@+id/search_text"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:padding="5dp"
-        android:hint="Enter First Name or Last Name"
+        android:hint="@string/search_child"
         android:textSize="17sp" />
 
 </LinearLayout>

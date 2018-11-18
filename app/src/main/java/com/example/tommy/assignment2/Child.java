@@ -3,20 +3,27 @@ package com.example.tommy.assignment2;
 public class Child {
 
     public static final Child[] CHILDREN = {
-            new Child(1, "a1", "b1", "c1", "d1", "City1", "BC", "V555555", "CANADA", 111, 111, true, "05Sept2018"),
-            new Child(2, "a2", "b2", "c2", "d2", "City2", "BC", "V555555", "CANADA", 222, 222, true, "05Sept2028"),
-            new Child(3, "a3", "b3", "c3", "d3", "City3", "BC", "V555555", "CANADA", 333, 333, true, "05Sept2038"),
-            new Child(4, "a4", "b4", "c4", "d4", "City4", "BC", "V555555", "CANADA", 444, 444, true, "05Sept2048"),
-            new Child(5, "a5", "b5", "c5", "d5", "City5", "BC", "V555555", "CANADA", 555, 555, true, "05Sept2058"),
-        };
+            new Child(1, "Tommy", "Yeh", "May 2018", "2222th street", "Vancouver", "BC", "V555555", "CANADA", 11.1, 11.1, false, "05Sept2018"),
+            new Child(2, "Job", "Emu", "June 2017", "4444th street", "City2", "BC", "V555555", "CANADA", 222, 222, false, "05Sept2028"),
+            new Child(3, "Elon", "Musk", "June 2017", "d3", "City3", "BC", "V555555", "CANADA", 333, 333, true, "05Sept2038"),
+            new Child(4, "Micro", "Soft", "June 2017", "d4", "City4", "BC", "V555555", "CANADA", 444, 444, false, "05Sept2048"),
+            new Child(5, "Burce", "Lee", "June 2017", "d5", "City5", "BC", "V555555", "CANADA", 555, 555, false, "05Sept2058"),
+    };
 
     private int id;
     private String firstName;
     private String lastName;
     private String birthDate;
     private String street;
+    private String province;
+    private String postalCode;
+    private String country;
+    private double latitude;
+    private double longitude;
+    private boolean isNaughty;
+    private String dateCreated;
 
-    public Child(int id, String firstName, String lastName, String birthDate, String street, String city, String province, String postalCode, String country, int latitude, int longitude, boolean isNaughty, String dateCreated) {
+    public Child(int id, String firstName, String lastName, String birthDate, String street, String city, String province, String postalCode, String country, double latitude, double longitude, boolean isNaughty, String dateCreated) {
         this.id=id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -53,13 +60,6 @@ public class Child {
                 '}';
     }
 
-    private String province;
-    private String postalCode;
-    private String country;
-    private int latitude;
-    private int longitude;
-    private boolean isNaughty;
-    private String dateCreated;
 
     public String getFirstName() {
         return firstName;
@@ -125,19 +125,19 @@ public class Child {
         this.country = country;
     }
 
-    public int getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public int getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(int longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 

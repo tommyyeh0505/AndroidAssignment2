@@ -15,78 +15,91 @@
 
         <TextView
             android:id="@+id/child_id"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/first_name"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/last_name"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/is_naughty"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/birthDate"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/street"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/city"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/province"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/postalCode"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/country"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/latitude"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/longitude"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/dateCreated"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"/>
@@ -95,11 +108,12 @@
             android:id="@+id/delete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DELETE CHILD"
+            android:text="@string/delete_child"
             android:visibility="gone"/>
 
         <TextView
             android:id="@+id/textView"
+            android:textSize="36sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -107,11 +121,9 @@
             android:id="@+id/select_child_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SELECT CHILD"
+            android:text="@string/select_child"
             android:textSize="36sp"
             android:visibility="visible"/>
 
     </LinearLayout>
-
-
 </RelativeLayout>

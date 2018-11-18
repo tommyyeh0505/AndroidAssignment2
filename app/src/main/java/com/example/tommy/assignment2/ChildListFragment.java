@@ -62,7 +62,6 @@ public class ChildListFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapter, View v, int position, long pos) {
 
                 Child c = childList.get(position);
-                Log.e("C info", c.toString());
                 acitivityInterface.selectChild(c);
                 }
         });

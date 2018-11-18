@@ -3,6 +3,7 @@ package com.example.tommy.assignment2;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,15 +46,26 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
 
     @Override
     public void selectChild(Child c){
-        ChildInfoFragment frag = (ChildInfoFragment) getSupportFragmentManager().findFragmentById(R.id.child_info_fragment);
-        frag.setChild(c);
+        View v = findViewById(R.id.child_info_fragment);
+        if (v == null) {
+            Intent i = new Intent(this, AddChildActivity.class);
+            i.putExtra("id", c.getId());
+            startActivity(i);
+        }
+        else {
+
+            ChildInfoFragment frag = (ChildInfoFragment) getSupportFragmentManager().findFragmentById(R.id.child_info_fragment);
+            frag.setChild(c);
+        }
     }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        String redirect = getIntent().getStringExtra("redirect");
         super.onCreate(savedInstanceState);
-        Log.e("1", "IN ONCREATE");
+
         setContentView(R.layout.activity_main);
         //APPBAR
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -61,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
         //CHILDREN LIST
         db = new SQLHelper(this);
 
-        if (db.getChildren().size() == 0) {
+        if (db.getChildren().size() == 0 && redirect == null) {
             for (Child c : Child.CHILDREN) {
                 db.insertChild(c);
             }
@@ -73,8 +85,8 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
     public void addChild() {
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
-        alertDialog.setTitle("ADD CHILD");
-        alertDialog.setMessage("Enter Child Information");
+        alertDialog.setTitle(R.string.add_button);
+        alertDialog.setMessage(R.string.enter_child_info);
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.child_add, null);
         alertDialog.setView(dialogView);
@@ -93,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
         final EditText isNaughty = (EditText)dialogView.findViewById(R.id.is_naughty);
 
 
-        alertDialog.setPositiveButton("Add",
+        alertDialog.setPositiveButton(R.string.add_button,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
@@ -116,15 +128,14 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
     public void search() {
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
-        alertDialog.setTitle("Search CHILD");
-        alertDialog.setMessage("Search for Child");
+        alertDialog.setTitle(R.string.search_button);
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.child_search, null);
         alertDialog.setView(dialogView);
 
         final EditText text = (EditText)dialogView.findViewById(R.id.search_text);
 
-        alertDialog.setPositiveButton("SEARCH",
+        alertDialog.setPositiveButton(R.string.search_button,
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
@@ -132,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
                         ArrayList<Child> children = db.getChildren(text.getText().toString());
                         listFrag.setList(children);
                         actionResetButton.setVisible(true);
-                        Toast.makeText(MainActivity.this, "List Filtered", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, R.string.list_filtered, Toast.LENGTH_LONG).show();
                     }
                 });
         AlertDialog dialog = alertDialog.create();
@@ -180,6 +191,9 @@ public class MainActivity extends AppCompatActivity implements ChildListFragment
         }
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
 
-
+    }
 }

@@ -3,20 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/action_reset"
-        android:title="Search"
+        android:title="@string/reset_button"
+        android:color="@color/white"
         app:showAsAction="always"
         android:icon="@drawable/ic_clear"
         android:visible="false"/>
 
     <item android:id="@+id/action_add"
-        android:title="Add Child"
+        android:color="@color/white"
+        android:title="@string/add_button"
         app:showAsAction="always"
         android:icon="@drawable/ic_star"/>
 
     <item android:id="@+id/action_search"
-        android:title="Search"
+        android:color="@color/white"
+        android:title="@string/search_button"
         app:showAsAction="always"
         android:icon="@drawable/ic_search"/>
 
-
+    <item android:id="@+id/action_add_overflow"
+        android:color="@color/white"
+        android:title="@string/add_button"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_star"/>
 </menu>
