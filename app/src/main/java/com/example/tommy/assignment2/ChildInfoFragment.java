@@ -66,12 +66,21 @@ public class ChildInfoFragment extends Fragment {
         isNaughty = (TextView) view.findViewById(R.id.is_naughty);
         dateCreated = (TextView) view.findViewById(R.id.dateCreated);
         delete = (Button) view.findViewById(R.id.delete_button);
+        edit = (Button) view.findViewById(R.id.edit_button);
         selectChild = (TextView) view.findViewById(R.id.select_child_textview);
 
         delete.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View v){
                         acitivityInterface.delete(Integer.parseInt(id.getText().toString()) );
+                        clearAllText();
+                    }
+                }
+        );
+
+        edit.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v){
                         clearAllText();
                     }
                 }
@@ -95,6 +104,8 @@ public class ChildInfoFragment extends Fragment {
         dateCreated.setText("");
         delete.setVisibility(View.INVISIBLE);
         delete.setVisibility(View.GONE);
+        edit.setVisibility(View.INVISIBLE);
+        edit.setVisibility(View.GONE);
         id.setVisibility(View.GONE);
         firstName.setVisibility(View.GONE);
         lastName.setVisibility(View.GONE);
@@ -112,6 +123,7 @@ public class ChildInfoFragment extends Fragment {
 
     public void setChild(Child c){
         delete.setVisibility(View.VISIBLE);
+        edit.setVisibility(View.VISIBLE);
         id.setVisibility(View.VISIBLE);
         firstName.setVisibility(View.VISIBLE);
         lastName.setVisibility(View.VISIBLE);

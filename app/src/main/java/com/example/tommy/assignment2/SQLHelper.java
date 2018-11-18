@@ -16,8 +16,6 @@ public class SQLHelper extends SQLiteOpenHelper {
         this.context = context;
         SQLiteDatabase db = this.getWritableDatabase();
         Log.e("NUMBER OF CHILDREN IN CHILD CLASS ARRAY: ", "" + Child.CHILDREN.length);
-
-
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -139,7 +137,11 @@ public class SQLHelper extends SQLiteOpenHelper {
         db.delete("KIDLIST", "_id" + "=" + i, null);
     }
 
-
+    public void editChild(int i){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Log.e("Editing id=", ""+i);
+        db.delete("KIDLIST", "_id" + "=" + i, null);
+    }
 
 
 }

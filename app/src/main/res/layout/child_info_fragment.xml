@@ -97,6 +97,12 @@
             android:layout_height="wrap_content"
             android:text="DELETE CHILD"
             android:visibility="gone"/>
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDIT CHILD"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/textView"
